@@ -10,10 +10,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: '/personal_page/',
   resolve: {
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
+      'figma:asset': path.resolve(__dirname, './src/assets'),
     },
   },
 
