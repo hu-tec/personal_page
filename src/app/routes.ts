@@ -18,4 +18,4 @@ export const router = createBrowserRouter([
       { path: "story", Component: StoryPage },
     ],
   },
-]);
+], { basename: "/personal_page/" });
