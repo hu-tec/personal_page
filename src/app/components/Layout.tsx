@@ -1,14 +1,14 @@
 import { Outlet, NavLink, useLocation } from "react-router";
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, Instagram, Linkedin, Youtube } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const navItems = [
-  { path: "/", label: "Home", emoji: "✨" },
-  { path: "/career", label: "경력 발자취", emoji: "🚀" },
-  { path: "/life", label: "삶의 발자취", emoji: "🌿" },
-  { path: "/future", label: "나아갈 길", emoji: "🌍" },
-  { path: "/story", label: "나의 이야기", emoji: "💬" },
+  { path: "/", label: "HOME" },
+  { path: "/career", label: "CAREER" },
+  { path: "/life", label: "LIFE" },
+  { path: "/future", label: "FUTURE" },
+  { path: "/story", label: "STORY" },
 ];
 
 export default function Layout() {
@@ -22,7 +22,7 @@ export default function Layout() {
   }, [location.pathname]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -33,45 +33,46 @@ export default function Layout() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_20px_rgba(0,0,0,0.06)]"
+            ? "bg-[#3A2E23] shadow-[0_1px_20px_rgba(0,0,0,0.3)]"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex items-center justify-between h-[68px]">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex items-center justify-between h-[80px]">
           <NavLink
             to="/"
-            className={`font-['Cormorant_Garamond','Noto_Serif_KR',serif] tracking-wide transition-colors duration-300 flex items-center gap-2 ${
-              scrolled ? "text-[#2a2a2a]" : "text-white"
-            }`}
-            style={{ fontSize: "1.4rem", fontWeight: 600 }}
+            className="font-['Cormorant_Garamond','Noto_Serif_KR',serif] tracking-wide text-white transition-colors duration-300 flex items-center gap-2"
+            style={{ fontSize: "1.5rem", fontWeight: 600 }}
           >
             <Sparkles size={18} className="text-[#c9a96e]" />
             Jinny Park
           </NavLink>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Center Desktop Nav */}
+          <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.path === "/"}
                 className={({ isActive }) =>
-                  `relative px-4 py-2 rounded-full transition-all duration-300 ${
-                    scrolled ? "text-[#555]" : "text-white/90"
-                  } ${
+                  `relative px-5 py-2 rounded-full transition-all duration-300 text-white/70 tracking-widest ${
                     isActive
-                      ? scrolled
-                        ? "bg-[#f5efe6] text-[#8b6914]"
-                        : "bg-white/15 text-white backdrop-blur-sm"
-                      : "hover:bg-white/10"
+                      ? "text-[#c9a96e] font-bold"
+                      : "hover:text-white"
                   }`
                 }
-                style={{ fontSize: "0.88rem", fontWeight: 500 }}
+                style={{ fontSize: "0.85rem", fontWeight: 500 }}
               >
                 {item.label}
               </NavLink>
             ))}
+          </div>
+
+          {/* Right Side SNS Icons */}
+          <div className="hidden md:flex items-center gap-4">
+            <a href="#" className="text-white/60 hover:text-[#c9a96e] transition-colors"><Instagram size={20} /></a>
+            <a href="#" className="text-white/60 hover:text-[#c9a96e] transition-colors"><Linkedin size={20} /></a>
+            <a href="#" className="text-white/60 hover:text-[#c9a96e] transition-colors"><Youtube size={20} /></a>
           </div>
 
           {/* Mobile Toggle */}
@@ -125,28 +126,28 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-[#faf7f2] to-[#f5efe6] py-12">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-          <div className="flex flex-col items-center text-center gap-6">
+      <footer className="bg-[#030213] py-16 border-t border-white/5">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="flex flex-col items-center text-center gap-8">
             <div>
               <p
-                className="font-['Cormorant_Garamond','Noto_Serif_KR',serif] text-[#2a2a2a] mb-2 flex items-center justify-center gap-2"
-                style={{ fontSize: "1.3rem", fontWeight: 600 }}
+                className="font-['Cormorant_Garamond','Noto_Serif_KR',serif] text-white mb-3 flex items-center justify-center gap-2"
+                style={{ fontSize: "1.6rem", fontWeight: 600 }}
               >
-                <Sparkles size={16} className="text-[#c9a96e]" />
+                <Sparkles size={18} className="text-[#c9a96e]" />
                 Jinny Park
               </p>
-              <p className="text-[#999]" style={{ fontSize: "0.85rem" }}>
-                교육 · 언어 · AI의 경계를 허물며 더 나은 내일을 만듭니다 ✨
+              <p className="text-white/40 font-light tracking-wide" style={{ fontSize: "0.9rem" }}>
+                교육 · 언어 · AI의 경계를 허물며 더 나은 내일을 만듭니다
               </p>
             </div>
-            <div className="flex gap-3 flex-wrap justify-center">
-              {["🏠 Home", "🚀 Career", "🌿 Life", "🌍 Future", "💬 Story"].map((label, i) => (
+            <div className="flex gap-4 flex-wrap justify-center">
+              {["HOME", "CAREER", "LIFE", "FUTURE", "STORY"].map((label, i) => (
                 <NavLink
                   key={i}
                   to={["/" , "/career", "/life", "/future", "/story"][i]}
-                  className="px-4 py-2 rounded-full bg-white/80 text-[#777] hover:text-[#2a2a2a] hover:bg-white transition-all border border-[#e8e0d4]/50"
-                  style={{ fontSize: "0.8rem" }}
+                  className="px-6 py-2.5 rounded-full bg-white/5 text-white/50 hover:text-[#c9a96e] hover:bg-white/10 transition-all border border-white/5"
+                  style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em" }}
                 >
                   {label}
                 </NavLink>
@@ -154,10 +155,11 @@ export default function Layout() {
             </div>
           </div>
           <div
-            className="mt-8 pt-6 border-t border-[#e8e0d4]/50 text-center text-[#bbb]"
-            style={{ fontSize: "0.8rem" }}
+            className="mt-12 pt-8 border-t border-white/5 text-center text-white/20 font-light"
+            style={{ fontSize: "0.8rem", letterSpacing: "0.05em" }}
           >
-            <p>© 2025 Jinny Park · Made with 💛</p>
+            <p>© 2025 Jinny Park · Professional Integrity</p>
+            <p className="mt-2 opacity-50 font-['Montserrat'] uppercase tracking-widest" style={{ fontSize: "0.7rem" }}>jinnypark116@gmail.com · 02-6207-9090</p>
           </div>
         </div>
       </footer>

@@ -124,17 +124,15 @@ export default function MediaGallery() {
         >
           {/* Header — Big & Bold */}
           <motion.div variants={fadeUp} className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full mb-6 border border-white/10">
-              <Sparkles size={14} className="text-[#FFD93D]" />
-              <span className="text-white/70" style={{ fontSize: "0.82rem", fontWeight: 500 }}>IN THE MEDIA</span>
-            </div>
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-8 mb-6 text-center">
+              <div className="h-[1px] w-24 bg-[#c9a96e]" />
+              <span className="font-['Montserrat'] uppercase tracking-[0.5em] text-[#c9a96e] text-[12px] font-bold">Media Gallery</span>
+              <div className="h-[1px] w-24 bg-[#c9a96e]" />
+            </motion.div>
             <h2
               className="font-['Cormorant_Garamond','Noto_Serif_KR',serif] text-white"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 600, lineHeight: 1.2 }}
-            >
-              언론사에서 바라본<br />
-              <span className="bg-gradient-to-r from-[#FFD93D] via-[#c9a96e] to-[#FFD93D] bg-clip-text text-transparent">JINNY PARK</span> ✨
-            </h2>
+            >언론에서 바라본<br /><span className="bg-gradient-to-r from-[#FFD93D] via-[#c9a96e] to-[#FFD93D] bg-clip-text text-transparent">JINNY PARK</span> ✨</h2>
             <p className="text-white/40 mt-4 max-w-[500px] mx-auto" style={{ fontSize: "0.92rem" }}>
               27년간의 여정을 함께 기록해온 언론 미디어 아카이브
             </p>
