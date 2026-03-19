@@ -38,6 +38,9 @@ const lifeDestinations = [
   { place: "네팔", desc: "사람들의 순수함이 마음을 울린 곳", detail: "히말라야 산기슭의 작은 마을에서 만난 아이들의 미소. 물질적으로는 아무것도 없었지만, 그곳에는 진짜 행복이 있었습니다.", img: "https://images.unsplash.com/photo-1511215579272-6192432f83bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXBhbCUyMGhpbWFsYXlhJTIwbW91bnRhaW4lMjB2aWxsYWdlfGVufDF8fHx8MTc3Mjc5MzA4MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
   { place: "거제도", desc: "어린 시절의 향기가 남아있는 곳", detail: "바다 냄새, 할머니 집 마당의 감나무, 포구의 작은 배들. 거제도에 가면 어린 시절의 나를 다시 만날 수 있습니다.", img: "https://images.unsplash.com/photo-1758327740350-ab960ea066ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBpc2xhbmQlMjBjb2FzdCUyMHNjZW5pY3xlbnwxfHx8fDE3NzI3OTM0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
   { place: "플로리다", desc: "바람, 바다, 그리고 여유", detail: "팜비치의 석양 아래 걷다 보면, 복잡했던 머릿속이 한없이 가벼워집니다. 바다가 주는 위안은 언제나 특별합니다.", img: "https://images.unsplash.com/photo-1645865290832-f81627455afb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmbG9yaWRhJTIwYmVhY2glMjBwYWxtJTIwdHJlZXMlMjBzdW5zZXR8ZW58MXx8fHwxNzcyNzkzNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { place: "네팔", desc: "사람들의 순수함이 마음을 울린 곳", detail: "히말라야 산기슭의 작은 마을에서 만난 아이들의 미소. 물질적으로는 아무것도 없었지만, 그곳에는 진짜 행복이 있었습니다.", img: "https://images.unsplash.com/photo-1511215579272-6192432f83bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXBhbCUyMGhpbWFsYXlhJTIwbW91bnRhaW4lMjB2aWxsYWdlfGVufDF8fHx8MTc3Mjc5MzA4MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { place: "거제도", desc: "어린 시절의 향기가 남아있는 곳", detail: "바다 냄새, 할머니 집 마당의 감나무, 포구의 작은 배들. 거제도에 가면 어린 시절의 나를 다시 만날 수 있습니다.", img: "https://images.unsplash.com/photo-1758327740350-ab960ea066ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBpc2xhbmQlMjBjb2FzdCUyMHNjZW5pY3xlbnwxfHx8fDE3NzI3OTM0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { place: "플로리다", desc: "바람, 바다, 그리고 여유", detail: "팜비치의 석양 아래 걷다 보면, 복잡했던 머릿속이 한없이 가벼워집니다. 바다가 주는 위안은 언제나 특별합니다.", img: "https://images.unsplash.com/photo-1645865290832-f81627455afb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmbG9yaWRhJTIwYmVhY2glMjBwYWxtJTIwdHJlZXMlMjBzdW5zZXR8ZW58MXx8fHwxNzcyNzkzNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
 ];
 
 const respectedPeople = [
@@ -337,7 +340,8 @@ export default function LifePage() {
               <p className="text-white/20 mt-4 font-['Montserrat'] tracking-widest font-bold uppercase" style={{ fontSize: "0.75rem" }}>나를 만들어 온 책, 영화, 그리고 사람들</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-10">
+            {/* Top 3 Cards Container */}
+            <div className="grid md:grid-cols-3 gap-10 mb-10">
               {/* 인생책 */}
               <motion.div variants={fadeUp} className="bg-white/5 rounded-[40px] p-12 border border-white/10 shadow-2xl backdrop-blur-md">
                 <h3 className="text-[#c9a96e] font-['Montserrat'] tracking-widest font-bold uppercase mb-10" style={{ fontSize: "0.85rem" }}>INSPIRATIONAL BOOKS</h3>
@@ -368,23 +372,6 @@ export default function LifePage() {
                 </div>
               </motion.div>
 
-              {/* 여행지 */}
-              <motion.div variants={fadeUp} className="bg-white/5 rounded-[40px] p-12 border border-white/10 shadow-2xl backdrop-blur-md">
-                <h3 className="text-[#c9a96e] font-['Montserrat'] tracking-widest font-bold uppercase mb-10" style={{ fontSize: "0.85rem" }}>PLACES OF PEACE</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  {lifeDestinations.map((dest, i) => (
-                    <motion.div key={i} whileHover={{ y: -6 }}>
-                      <div className="relative rounded-2xl overflow-hidden aspect-square mb-4 shadow-xl border border-white/5">
-                        <ImageWithFallback src={dest.img} alt={dest.place} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                        <p className="absolute bottom-3 left-4 text-white font-bold" style={{ fontSize: "0.85rem" }}>{dest.place}</p>
-                      </div>
-                      <p className="text-white/40 font-light leading-tight" style={{ fontSize: "0.75rem" }}>{dest.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
               {/* 존경하는 사람들 */}
               <motion.div variants={fadeUp} className="bg-white/5 rounded-[40px] p-12 border border-white/10 shadow-2xl backdrop-blur-md">
                 <h3 className="text-[#c9a96e] font-['Montserrat'] tracking-widest font-bold uppercase mb-10" style={{ fontSize: "0.85rem" }}>RESPECTED VOICES</h3>
@@ -394,6 +381,26 @@ export default function LifePage() {
                       <p className="text-white mb-2" style={{ fontSize: "1rem", fontWeight: 600 }}>{p.name}</p>
                       <p className="text-white/30 font-light leading-relaxed" style={{ fontSize: "0.8rem" }}>{p.reason}</p>
                     </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Bottom Full-Width CardContainer */}
+            <div className="w-full">
+              {/* 여행지 */}
+              <motion.div variants={fadeUp} className="bg-white/5 rounded-[40px] p-12 border border-white/10 shadow-2xl backdrop-blur-md">
+                <h3 className="text-[#c9a96e] font-['Montserrat'] tracking-widest font-bold uppercase mb-10" style={{ fontSize: "0.85rem" }}>PLACES OF PEACE</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {lifeDestinations.map((dest, i) => (
+                    <motion.div key={i} whileHover={{ y: -6 }}>
+                      <div className="relative rounded-2xl overflow-hidden aspect-video mb-4 shadow-xl border border-white/5">
+                        <ImageWithFallback src={dest.img} alt={dest.place} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                        <p className="absolute bottom-3 left-4 text-white font-bold" style={{ fontSize: "0.85rem" }}>{dest.place}</p>
+                      </div>
+                      <p className="text-white/40 font-light leading-tight" style={{ fontSize: "0.75rem" }}>{dest.desc}</p>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
