@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
   ChevronDown,
@@ -56,9 +58,12 @@ function PostForm({ onAdd, category, onCancel, subcategories }: { onAdd: (post: 
   const [imgUrls, setImgUrls] = useState<string[]>([""]);
   const [subcategory, setSubcategory] = useState(subcategories?.[0] || "");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !content.trim()) return;
+    setSubmitting(true);
 
     const filteredUrls = imgUrls.filter(url => url.trim() !== "");
 
@@ -73,8 +78,20 @@ function PostForm({ onAdd, category, onCancel, subcategories }: { onAdd: (post: 
       fullContent: content.trim().split("\n"),
       comments: [],
     };
-    onAdd(newPost);
-    onCancel();
+
+    try {
+      await fetch(`${API_URL}/api/story_posts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newPost),
+      });
+      onAdd(newPost);
+      onCancel();
+    } catch {
+      alert('저장에 실패했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const addImageUrlField = () => setImgUrls([...imgUrls, ""]);
@@ -150,7 +167,7 @@ function PostForm({ onAdd, category, onCancel, subcategories }: { onAdd: (post: 
 
         <div className="flex gap-4 pt-4">
           <button type="button" onClick={onCancel} className="flex-1 px-8 py-4 border border-white/10 text-white/40 rounded-2xl hover:bg-white/5 transition-all font-bold uppercase tracking-widest text-[11px]">취소</button>
-          <button type="submit" className="flex-[2] px-8 py-4 bg-[#c9a96e] text-black rounded-2xl hover:bg-[#b8976a] transition-all font-bold uppercase tracking-widest text-[11px] shadow-2xl shadow-[#c9a96e]/20">등록하기</button>
+          <button type="submit" disabled={submitting} className="flex-[2] px-8 py-4 bg-[#c9a96e] text-black rounded-2xl hover:bg-[#b8976a] transition-all font-bold uppercase tracking-widest text-[11px] shadow-2xl shadow-[#c9a96e]/20 disabled:opacity-50">{submitting ? '저장 중...' : '등록하기'}</button>
         </div>
       </form>
     </motion.div>
@@ -271,6 +288,18 @@ const travelPhotos = [
 export default function StoryPage() {
   const [peoplePosts, setPeoplePosts] = useState<BlogPost[]>(initialPeoplePosts);
   const [showPeopleForm, setShowPeopleForm] = useState(false);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/story_posts`)
+      .then(res => res.json())
+      .then((rows: { id: number; data: string }[]) => {
+        const saved = rows.map(r => {
+          try { return JSON.parse(r.data) as BlogPost; } catch { return null; }
+        }).filter((p): p is BlogPost => p !== null);
+        if (saved.length > 0) setPeoplePosts([...saved, ...initialPeoplePosts]);
+      })
+      .catch(() => { /* 오프라인 시 초기 데이터 유지 */ });
+  }, []);
 
   return (
     <div className="bg-[#0a0a0a] min-h-screen text-white/80 py-32 px-6 lg:px-12">
