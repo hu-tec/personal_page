@@ -80,15 +80,16 @@ function PostForm({ onAdd, category, onCancel, subcategories }: { onAdd: (post: 
     };
 
     try {
-      await fetch(`${API_URL}/api/story_posts`, {
+      const res = await fetch(`${API_URL}/api/story_posts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPost),
       });
+      if (!res.ok) throw new Error('서버 오류');
       onAdd(newPost);
       onCancel();
     } catch {
-      alert('저장에 실패했습니다.');
+      alert('저장에 실패했습니다. 잠시 후 다시 시도해주세요.');
     } finally {
       setSubmitting(false);
     }
@@ -291,12 +292,19 @@ export default function StoryPage() {
 
   useEffect(() => {
     fetch(`${API_URL}/api/story_posts`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('서버 오류');
+        return res.json();
+      })
       .then((rows: { id: number; data: string }[]) => {
         const saved = rows.map(r => {
           try { return JSON.parse(r.data) as BlogPost; } catch { return null; }
         }).filter((p): p is BlogPost => p !== null);
-        if (saved.length > 0) setPeoplePosts([...saved, ...initialPeoplePosts]);
+        if (saved.length > 0) {
+          const initialIds = new Set(initialPeoplePosts.map(p => p.id));
+          const unique = saved.filter(p => !initialIds.has(p.id));
+          setPeoplePosts([...unique, ...initialPeoplePosts]);
+        }
       })
       .catch(() => { /* 오프라인 시 초기 데이터 유지 */ });
   }, []);
