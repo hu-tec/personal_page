@@ -31,7 +31,7 @@ const brandKeywords = [
 ];
 
 const coreKeywords = [
-  { emoji: "", title: "따뜻한 엄마", desc: "두 딸의 성장을 함께하는 <br> 동반자", gradient: "from-white/5 to-white/0" },
+  { emoji: "", title: "따뜻한 엄마", desc: "두 딸의 성장을 <br> 함께하는  동반자", gradient: "from-white/5 to-white/0" },
   { emoji: "", title: "국제적 마인드", desc: "한국·미국·캐나다·유럽을 <br> 넘나든 글로벌 경영 감각", gradient: "from-white/5 to-white/0" },
   { emoji: "", title: "자연과 명상", desc: "자연과 함께 20년 명상으로 내면을 다스리는 지혜", gradient: "from-white/5 to-white/0" },
   { emoji: "", title: "함께할 때 강한 리더", desc: "협업에 강하고 <br>시너지를 만드는 사람", gradient: "from-white/5 to-white/0" },
@@ -90,8 +90,8 @@ const DiamondCard = ({ title, desc, top, left, delay = 0 }) => {
         <h4 className="font-['Noto_Serif_KR',serif] text-[#c9a96e] mb-2 tracking-widest font-bold" style={{ fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)" }}>
           {title}
         </h4>
-        <p 
-          className="text-white/60 leading-relaxed font-['Noto_Serif_KR',serif]" 
+        <p
+          className="text-white/60 leading-relaxed font-['Noto_Serif_KR',serif]"
           style={{ fontSize: "clamp(0.7rem, 1vw, 0.85rem)" }}
           dangerouslySetInnerHTML={{ __html: desc }}
         />
