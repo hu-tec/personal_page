@@ -31,10 +31,10 @@ const brandKeywords = [
 ];
 
 const coreKeywords = [
-  { emoji: "", title: "따뜻한 엄마", desc: "두 딸의 성장을 함께하는 동반자", gradient: "from-white/5 to-white/0" },
-  { emoji: "", title: "국제적 마인드", desc: "한국·미국·캐나다·유럽을 넘나든 글���벌 경영 감각", gradient: "from-white/5 to-white/0" },
+  { emoji: "", title: "따뜻한 엄마", desc: "두 딸의 성장을 함께하는 <br> 동반자", gradient: "from-white/5 to-white/0" },
+  { emoji: "", title: "국제적 마인드", desc: "한국·미국·캐나다·유럽을 <br> 넘나든 글로벌 경영 감각", gradient: "from-white/5 to-white/0" },
   { emoji: "", title: "자연과 명상", desc: "자연과 함께 20년 명상으로 내면을 다스리는 지혜", gradient: "from-white/5 to-white/0" },
-  { emoji: "", title: "함께할 때 강한 리더", desc: "협업에 강하고 시너지를 만드는 사람", gradient: "from-white/5 to-white/0" },
+  { emoji: "", title: "함께할 때 강한 리더", desc: "협업에 강하고 <br>시너지를 만드는 사람", gradient: "from-white/5 to-white/0" },
 ];
 
 const stats = [
@@ -85,9 +85,9 @@ const DiamondCard = ({ title, desc, top, left, delay = 0 }) => {
     >
       {/* Hover Fill Layer */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a96e]/20 to-transparent scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-1000 ease-out" />
-      
+
       <div className="-rotate-45 text-center relative z-10">
-        <h4 className="font-['Playfair_Display'] italic text-[#c9a96e] mb-2 uppercase tracking-widest font-bold" style={{ fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)" }}>
+        <h4 className="font-['Noto_Serif_KR',serif] text-[#c9a96e] mb-2 tracking-widest font-bold" style={{ fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)" }}>
           {title}
         </h4>
         <p className="text-white/60 leading-relaxed font-['Noto_Serif_KR',serif]" style={{ fontSize: "clamp(0.7rem, 1vw, 0.85rem)" }}>
@@ -149,9 +149,9 @@ export default function HomePage() {
       <section className="relative h-screen min-h-[800px] flex items-center overflow-hidden">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          <ImageWithFallback 
-            src={newHeroBg} 
-            alt="Jinny Park" 
+          <ImageWithFallback
+            src={newHeroBg}
+            alt="Jinny Park"
             className="w-full h-full object-cover object-center scale-105"
           />
           {/* Gradients for readability */}
@@ -160,9 +160,9 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-10 lg:px-20 h-full flex flex-col">
-          <motion.div 
-            initial="hidden" 
-            animate="visible" 
+          <motion.div
+            initial="hidden"
+            animate="visible"
             variants={stagger}
             className="flex flex-col gap-10 max-w-full pt-[35vh]"
           >
@@ -170,8 +170,8 @@ export default function HomePage() {
             <motion.div variants={fadeUp} className="w-[520px] h-[90px] hidden md:block">
               <div className="grid grid-cols-4 h-full bg-[#3C2814]/50 backdrop-blur-2xl rounded-[20px] px-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-white/10 items-center">
                 {stats.map((s, i) => (
-                  <div 
-                    key={i} 
+                  <div
+                    key={i}
                     className={`flex flex-col items-center justify-center h-12 ${i < stats.length - 1 ? "border-r border-white/10" : ""}`}
                   >
                     <div className="flex items-baseline gap-0.5 mb-0.5">
@@ -192,8 +192,8 @@ export default function HomePage() {
 
             {/* Main Titles */}
             <div className="space-y-6 max-w-4xl">
-              <motion.h1 
-                variants={fadeUp} 
+              <motion.h1
+                variants={fadeUp}
                 className="font-['Noto_Serif_KR',serif] text-white leading-[1.2] tracking-tight whitespace-nowrap"
                 style={{ fontSize: "clamp(3.5rem, 5vw, 4.5rem)", fontWeight: 400 }}
               >
@@ -201,8 +201,8 @@ export default function HomePage() {
                 <span className="italic text-[#D6B97B]">AI</span>로 언어의 장벽을 넘다
               </motion.h1>
 
-              <motion.div 
-                variants={fadeUp} 
+              <motion.div
+                variants={fadeUp}
                 className="space-y-3 text-white/80 font-['Montserrat'] font-light max-w-2xl"
                 style={{ fontSize: "1rem", lineHeight: 1.8 }}
               >
@@ -254,7 +254,7 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 max-w-[1600px] mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -266,14 +266,14 @@ export default function HomePage() {
               <span className="font-['Montserrat'] uppercase tracking-[0.5em] text-[#c9a96e] text-[12px] font-bold">The Essence</span>
               <div className="h-[1px] w-24 bg-[#c9a96e]" />
             </motion.div>
-            <motion.h2 
+            <motion.h2
               variants={fadeUp}
               className="text-white font-['Playfair_Display'] leading-tight mb-12"
               style={{ fontSize: "clamp(2.5rem, 5vw, 4.2rem)", fontWeight: 300 }}
             >
               삶의 결이 담긴, <span className="italic">진정한 나다움</span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               variants={fadeUp}
               className="text-white/50 font-['Montserrat'] max-w-4xl mx-auto leading-[2.2] tracking-wide"
               style={{ fontSize: "1.05rem", fontWeight: 400 }}
@@ -292,23 +292,23 @@ export default function HomePage() {
               <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-[#c9a96e]/60 z-30" />
 
               {/* Central Cinematic Image with 2.5s Saturation Animation — Hanbok Profile */}
-              <motion.div 
+              <motion.div
                 initial={{ filter: "grayscale(100%)" }}
                 whileInView={{ filter: "grayscale(0%)" }}
                 viewport={{ once: true, margin: "-150px" }}
                 transition={{ duration: 2.5, ease: "easeInOut" }}
                 className="relative z-20 w-full h-full rounded-[40px] overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.8)] border border-white/5"
               >
-                <ImageWithFallback 
-                  src={hanbokProfile} 
-                  alt="Essence Profile" 
-                  className="w-full h-full object-cover" 
+                <ImageWithFallback
+                  src={hanbokProfile}
+                  alt="Essence Profile"
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-                
+
                 {/* Content Overlay - Quote & Tags */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 pt-20">
-                  <motion.p 
+                  <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2.5, duration: 1 }}
@@ -317,16 +317,16 @@ export default function HomePage() {
                   >
                     "혼자서는 게으르지만,<br />함께할 땐 기적을 만드는 사람"
                   </motion.p>
-                  
+
                   <div className="flex justify-between items-center gap-3">
-                    <motion.div 
+                    <motion.div
                       whileHover={{ scale: 1.05, y: -2 }}
                       className="bg-gradient-to-r from-[#c9a96e] to-[#e0c68a] text-white px-5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2"
                       style={{ fontSize: "0.82rem", fontWeight: 600 }}
                     >
                       <span>1월 16일생 · ESFP · O형</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       whileHover={{ scale: 1.05, y: -2 }}
                       className="bg-[#1a1a1a]/80 backdrop-blur-md text-white/90 px-5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 border border-white/10"
                       style={{ fontSize: "0.82rem", fontWeight: 600 }}
@@ -338,46 +338,46 @@ export default function HomePage() {
               </motion.div>
 
               {/* Diamond Overlapping Cards — Adjusted vertically to center with the image */}
-              <DiamondCard 
-                title="WARM MOTHER" 
-                desc="두 딸의 성장을 함께하는 동반자" 
-                top="60px" 
-                left="-37px" 
-                delay={0.2} 
+              <DiamondCard
+                title={coreKeywords[0].title}
+                desc={coreKeywords[0].desc}
+                top="60px"
+                left="-37px"
+                delay={0.2}
               />
-              <DiamondCard 
-                title="GLOBAL MINDSET" 
-                desc="한국·미국·캐나다·유럽을 넘나든 글로벌 경영 감각" 
-                top="60px" 
-                left="537px" 
-                delay={0.3} 
+              <DiamondCard
+                title={coreKeywords[1].title}
+                desc={coreKeywords[1].desc}
+                top="60px"
+                left="537px"
+                delay={0.3}
               />
-              <DiamondCard 
-                title="NATURE & MEDITATION" 
-                desc="자연과 함께 20년 명상으로 내면을 다스리는 지혜" 
-                top="380px" 
-                left="-37px" 
-                delay={0.4} 
+              <DiamondCard
+                title={coreKeywords[2].title}
+                desc={coreKeywords[2].desc}
+                top="380px"
+                left="-37px"
+                delay={0.4}
               />
-              <DiamondCard 
-                title="COLLABORATIVE LEADER" 
-                desc="협업에 강하고 시너지를 만드는 사람" 
-                top="380px" 
-                left="537px" 
-                delay={0.5} 
+              <DiamondCard
+                title={coreKeywords[3].title}
+                desc={coreKeywords[3].desc}
+                top="380px"
+                left="537px"
+                delay={0.5}
               />
             </div>
 
             {/* Bottom Identity Navigation */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 1, duration: 0.8 }}
               className="mt-40"
             >
-              <NavLink 
-                to="/identity" 
+              <NavLink
+                to="/identity"
                 className="group flex items-center gap-6 text-white/30 hover:text-[#c9a96e] transition-colors duration-500"
                 style={{ fontSize: "13px", letterSpacing: "0.5em", fontWeight: 700 }}
               >
