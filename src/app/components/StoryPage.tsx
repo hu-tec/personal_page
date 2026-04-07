@@ -4,14 +4,9 @@ import { motion, AnimatePresence } from "motion/react";
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
-  ChevronDown,
-  ChevronUp,
   MessageCircle,
-  Heart,
   Send,
   Clock,
-  User,
-  CheckCircle2,
   Circle,
 } from "lucide-react";
 
@@ -441,11 +436,35 @@ export default function StoryPage() {
   }, []);
 
   return (
-    <div className="bg-[#0a0a0a] min-h-screen text-white/80 py-32 px-6 lg:px-12">
-      <div className="max-w-[1400px] mx-auto">
+    <div className="bg-[#0a0a0a] min-h-screen text-white/80 pb-32">
+      {/* Section Link Bar */}
+      <div className="sticky top-[80px] z-40 bg-[#0a0a0a]/90 backdrop-blur-2xl border-y border-white/5 mb-24">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-4">
+          <div className="flex gap-4 overflow-x-auto justify-center" style={{ scrollbarWidth: "none" }}>
+            {sections.map(sec => (
+              <button
+                key={sec.id}
+                onClick={() => {
+                  const target = document.getElementById(`section-${sec.id}`);
+                  if (target) {
+                    const y = target.getBoundingClientRect().top + window.scrollY - 150;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+                className="shrink-0 px-6 py-2 rounded-full transition-all cursor-pointer text-white/40 hover:text-[#c9a96e] hover:bg-white/5 font-['Montserrat'] tracking-widest uppercase"
+                style={{ fontSize: "0.75rem", fontWeight: 600 }}
+              >
+                {sec.title.replace(/[^가-힣a-zA-Z\s]/g, '').trim()}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
 
         {sections.map((section, idx) => (
-          <section key={section.id} className={idx < sections.length - 1 ? "mb-32" : ""}>
+          <section key={section.id} id={`section-${section.id}`} className={idx < sections.length - 1 ? "mb-32 scroll-mt-[150px]" : "scroll-mt-[150px]"}>
             <SectionHeader label={section.label} title={section.title} subtitle={section.subtitle} />
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">

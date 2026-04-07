@@ -122,7 +122,7 @@ export default function CareerPage() {
         <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-24">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-[800px]">
             <motion.h1 variants={fadeUp} className="font-['Cormorant_Garamond','Noto_Serif_KR',serif] text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 500, lineHeight: 1.2 }}>
-              27년 넘는 시간,<br /><span className="text-[#c9a96e] italic">변화의 최전선에서</span> 길을 만들다
+              27년 넘는 시간,<br /><span className="whitespace-nowrap"><span className="text-[#c9a96e] italic">변화의 최전선에서</span> 길을 만들다</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-white/50 max-w-[550px] font-light leading-relaxed" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)" }}>
               언어와 교육, 기술의 융합을 통해 혁신을 이끌고 수많은 이들과 함께 성장해 온 여정

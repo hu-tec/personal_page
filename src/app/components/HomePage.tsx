@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ChevronRight, Sparkles, Heart, ArrowDown } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { NavLink } from "react-router";
 import MediaGallery from "./MediaGallery";
 import colleaguesImg from "figma:asset/f9631c2e7bf230d64eff82200903e629cb41b41a.png";
 import marathonImg from "figma:asset/0f8453795dd662ffd4ff94633072636e34293459.png";
-import timelineImg from "figma:asset/d9555326164840fecc88bd39baf8459fc8f36530.png";
-import heroProfile from "figma:asset/8a95e17c1266acf6ef562be3b94aa200c28b8f0e.png";
-import essenceProfile from "figma:asset/0ee047dc493038a84474d8c1b016e4804d1e0f35.png";
 import hanbokProfile from "figma:asset/b509baba4bb503e20a21cbc3b78abf2edfe8d057.png";
-import heroMain from "figma:asset/29e64ffd6f89fe98365ac0334d677f166fb31e59.png";
 import newHeroBg from "figma:asset/c0e618e62ed091e470faf524cdb5a2156961ffa9.png";
 
 const fadeUp = {
@@ -21,14 +17,6 @@ const fadeUp = {
 const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
-
-const brandKeywords = [
-  { letter: "J", word: "Joy", desc: "사람에게 기쁨을 주는 사람", color: "#FF6B6B" },
-  { letter: "I", word: "Integrity", desc: "진심과 정직을 지키는 사람", color: "#4ECDC4" },
-  { letter: "N", word: "Nurture", desc: "사람을 키우는 사람", color: "#FFD93D" },
-  { letter: "N", word: "Nobility", desc: "품격 있는 행동을 실천하는 사람", color: "#6C5CE7" },
-  { letter: "Y", word: "Yield", desc: "결과를 만들어내는 실천가", color: "#FF8A5B" },
-];
 
 const coreKeywords = [
   { emoji: "", title: "따뜻한 엄마", desc: "두 딸의 성장을 <br> 함께하는  동반자", gradient: "from-white/5 to-white/0" },
@@ -53,7 +41,7 @@ const homeSections = [
   { id: "vision", label: "VISION" },
 ];
 
-const ScrollingMarquee = ({ text, direction = 1, speed = 0.3 }) => {
+const ScrollingMarquee = ({ text, direction = 1, speed = 0.3 }: { text: string; direction?: number; speed?: number }) => {
   return (
     <div className="overflow-hidden flex whitespace-nowrap opacity-[0.03] select-none pointer-events-none">
       <motion.div
@@ -72,7 +60,7 @@ const ScrollingMarquee = ({ text, direction = 1, speed = 0.3 }) => {
   );
 };
 
-const DiamondCard = ({ title, desc, top, left, delay = 0 }) => {
+const DiamondCard = ({ title, desc, top, left, delay = 0 }: { title: string; desc: string; top: string; left: string; delay?: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8, rotate: 45, x: "-50%", y: "-50%" }}
@@ -100,15 +88,15 @@ const DiamondCard = ({ title, desc, top, left, delay = 0 }) => {
   );
 };
 
-const Counter = ({ value, duration = 2, repeatDelay = 1 }) => {
+const Counter = ({ value, duration = 2, repeatDelay = 1 }: { value: string | number; duration?: number; repeatDelay?: number }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     let start = 0;
-    const end = parseInt(value);
+    const end = parseInt(value as string);
     if (start === end) return;
 
-    let timer;
+    let timer: ReturnType<typeof setInterval>;
     const animate = () => {
       const incrementTime = (duration * 1000) / end;
       timer = setInterval(() => {
@@ -132,7 +120,7 @@ const Counter = ({ value, duration = 2, repeatDelay = 1 }) => {
   return <span>{count}</span>;
 };
 
-const CountingNumber = ({ value, suffix }) => {
+const CountingNumber = ({ value, suffix }: { value: string | number; suffix: React.ReactNode }) => {
   return (
     <>
       <Counter value={value} />
@@ -142,19 +130,18 @@ const CountingNumber = ({ value, suffix }) => {
 };
 
 export default function HomePage() {
-  const { scrollYProgress } = useScroll();
-  const saturation = useTransform(scrollYProgress, [0.1, 0.3], ["grayscale(100%)", "grayscale(0%)"]);
+
 
   return (
     <div className="bg-[#1a1a1a]">
       {/* Hero Section — Full Background Image Overlay */}
-      <section className="relative h-screen min-h-[800px] flex items-center overflow-hidden">
+      <section className="relative h-[100svh] min-h-[500px] lg:min-h-[800px] flex items-center overflow-hidden">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
             src={newHeroBg}
             alt="Jinny Park"
-            className="w-full h-full object-cover object-center scale-105"
+            className="w-full h-full object-cover object-[70%_center] md:object-center"
           />
           {/* Gradients for readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
