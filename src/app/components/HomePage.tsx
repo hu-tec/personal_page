@@ -90,9 +90,11 @@ const DiamondCard = ({ title, desc, top, left, delay = 0 }) => {
         <h4 className="font-['Noto_Serif_KR',serif] text-[#c9a96e] mb-2 tracking-widest font-bold" style={{ fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)" }}>
           {title}
         </h4>
-        <p className="text-white/60 leading-relaxed font-['Noto_Serif_KR',serif]" style={{ fontSize: "clamp(0.7rem, 1vw, 0.85rem)" }}>
-          {desc}
-        </p>
+        <p 
+          className="text-white/60 leading-relaxed font-['Noto_Serif_KR',serif]" 
+          style={{ fontSize: "clamp(0.7rem, 1vw, 0.85rem)" }}
+          dangerouslySetInnerHTML={{ __html: desc }}
+        />
       </div>
     </motion.div>
   );
