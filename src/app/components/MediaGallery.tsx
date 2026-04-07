@@ -24,7 +24,7 @@ interface MediaCategory {
 
 const categories: MediaCategory[] = [
   {
-    id: "ai", label: "AI 번역 대결", emoji: "🤖",
+    id: "ai", label: "AI 번역 대결", emoji: "",
     title: "AI vs 휴먼 번역의 미래를 논하다",
     desc: "인공지능과 인간 번역가의 대결, 그 역사적 순간을 기록하다",
     featured: "https://cdn.imweb.me/thumbnail/20250428/f7ddcd14959a4.jpg",
@@ -38,7 +38,7 @@ const categories: MediaCategory[] = [
     ],
   },
   {
-    id: "scholarship", label: "장학금 & 교육", emoji: "🎓",
+    id: "scholarship", label: "장학금 & 교육", emoji: "",
     title: "함께 성장하는 삶 – 장학금 지급 활동",
     desc: "교육의 기회를 나누고, 인재의 꿈을 응원합니다",
     featured: "https://cdn.imweb.me/thumbnail/20250428/9bd440a75fab2.png",
@@ -48,7 +48,7 @@ const categories: MediaCategory[] = [
     ],
   },
   {
-    id: "contest", label: "경연 & 봉사", emoji: "🏆",
+    id: "contest", label: "경연 & 봉사", emoji: "",
     title: "글로벌 인재를 발굴하고 세계로 보내다",
     desc: "2002~2012 선발대회 및 해외 자원봉사 파견 기록",
     featured: "https://cdn.imweb.me/thumbnail/20250429/5a46d63149098.jpg",
@@ -60,7 +60,7 @@ const categories: MediaCategory[] = [
     ],
   },
   {
-    id: "school", label: "국제학교", emoji: "🏫",
+    id: "school", label: "국제학교", emoji: "",
     title: "국경 없는 교실, 세계를 품은 학교",
     desc: "ICS 국제학교 운영 및 미국 대학 학점연계 프로그램",
     featured: "https://cdn.imweb.me/thumbnail/20250429/8ce5a22f15cc5.png",
@@ -73,7 +73,7 @@ const categories: MediaCategory[] = [
     ],
   },
   {
-    id: "exam", label: "통번역 시험", emoji: "📋",
+    id: "exam", label: "통번역 시험", emoji: "",
     title: "30만 명이 응시한 대한민국 통번역 시험의 역사",
     desc: "통역 번역 시험 운영 및 국내외 업무 협약 현장",
     featured: "https://cdn.imweb.me/thumbnail/20250429/887643e80003d.jpg",
@@ -91,7 +91,7 @@ const categories: MediaCategory[] = [
     ],
   },
   {
-    id: "web", label: "홈페이지 & 홍보", emoji: "🌐",
+    id: "web", label: "홈페이지 & 홍보", emoji: "",
     title: "브랜드의 첫인상을 디자인하다",
     desc: "웹사이트 사례 및 홍보 자료 아카이브",
     featured: "https://cdn.imweb.me/thumbnail/20250428/99a494e390dd8.jpg",
@@ -114,7 +114,7 @@ export default function MediaGallery() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a2e] to-[#16213e]" />
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#c9a96e]/8 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#4ECDC4]/8 rounded-full blur-[100px]" />
-      
+
       <div className="relative z-10 max-w-[1300px] mx-auto">
         <motion.div
           initial="hidden"
@@ -132,7 +132,7 @@ export default function MediaGallery() {
             <h2
               className="font-['Cormorant_Garamond','Noto_Serif_KR',serif] text-white"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 600, lineHeight: 1.2 }}
-            >언론에서 바라본<br /><span className="bg-gradient-to-r from-[#FFD93D] via-[#c9a96e] to-[#FFD93D] bg-clip-text text-transparent">JINNY PARK</span> ✨</h2>
+            >언론에서 바라본<br /><span className="bg-gradient-to-r from-[#FFD93D] via-[#c9a96e] to-[#FFD93D] bg-clip-text text-transparent">JINNY PARK</span> </h2>
             <p className="text-white/40 mt-4 max-w-[500px] mx-auto" style={{ fontSize: "0.92rem" }}>
               27년간의 여정을 함께 기록해온 언론 미디어 아카이브
             </p>
@@ -146,11 +146,10 @@ export default function MediaGallery() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id)}
-                  className={`px-5 py-2.5 rounded-full border transition-all duration-300 cursor-pointer flex items-center gap-2 ${
-                    isActive
-                      ? "bg-white text-[#1a1a2e] border-white shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-                      : "bg-white/5 text-white/60 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/25"
-                  }`}
+                  className={`px-5 py-2.5 rounded-full border transition-all duration-300 cursor-pointer flex items-center gap-2 ${isActive
+                    ? "bg-white text-[#1a1a2e] border-white shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                    : "bg-white/5 text-white/60 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/25"
+                    }`}
                   style={{ fontSize: "0.85rem", fontWeight: isActive ? 600 : 400 }}
                 >
                   <span style={{ fontSize: "1rem" }}>{cat.emoji}</span>
@@ -181,7 +180,7 @@ export default function MediaGallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-                
+
                 {/* Title overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full mb-4 border border-white/20">
@@ -198,7 +197,7 @@ export default function MediaGallery() {
                     {active.desc}
                   </p>
                 </div>
-                
+
                 {/* Click hint */}
                 <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-xl text-white/80 rounded-full px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity border border-white/10" style={{ fontSize: "0.75rem" }}>
                   📸 클릭하여 확대
